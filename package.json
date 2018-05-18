@@ -26,6 +26,7 @@
     "angularfire2": "^5.0.0-rc.9",
     "core-js": "^2.5.4",
     "firebase": "^5.0.2",
+    "npm": "^5.6.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
@@ -37,6 +38,7 @@
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
+    "angular-ide": "^0.9.41",
     "bulma": "^0.7.1",
     "codelyzer": "~4.2.1",
     "jasmine-core": "~2.99.1",
