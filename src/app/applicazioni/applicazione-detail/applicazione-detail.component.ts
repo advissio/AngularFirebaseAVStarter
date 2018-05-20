@@ -13,14 +13,6 @@ export class ApplicazioneDetailComponent {
 
   constructor(private applicazioniService: ApplicazioniService) { }
 
-  addHeartToNote(val: number) {
-    if (this.applicazione.id) {
-      this.applicazioniService.updateApplicazione(this.applicazione.id, { hearts: val + 1 });
-    } else {
-      console.error('Note missing ID!');
-    }
-  }
-
   deleteNote(id: string) {
     this.applicazioniService.deleteApplicazione(id);
   }

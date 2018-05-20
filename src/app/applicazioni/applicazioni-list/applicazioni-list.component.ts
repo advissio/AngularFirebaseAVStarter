@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class ApplicazioniListComponent implements OnInit {
 
   applicazioni: Observable<any[]>;
-  content: string;
+  name: string;
 
   constructor(private applicazioniService: ApplicazioniService) { }
 
@@ -19,8 +19,8 @@ export class ApplicazioniListComponent implements OnInit {
   }
 
   clickHandler() {
-    this.applicazioniService.createApplicazione(this.content);
-    this.content = '';
+    this.applicazioniService.createApplicazione(this.name);
+    this.name = '';
   }
 
 }

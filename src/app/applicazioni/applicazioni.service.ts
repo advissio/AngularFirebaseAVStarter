@@ -31,10 +31,9 @@ export class ApplicazioniService {
     return this.afs.doc<any>(`applicazioni/${id}`);
   }
 
-  createApplicazione(content: string) {
+  createApplicazione(name: string) {
     const applicazione = {
-      content,
-      hearts: 0,
+      name,
       time: new Date().getTime(),
     };
     return this.applicazioniCollection.add(applicazione);
