@@ -8,11 +8,12 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class ApplicazioniService {
 
+  applicazioniRighe;
   applicazioniCollection: AngularFirestoreCollection<any>;
   applicazioneDocument:   AngularFirestoreDocument<any>;
 
   constructor(private afs: AngularFirestore) {
-    this.applicazioniCollection = this.afs.collection('applicazioni', (ref) => ref.orderBy('name', 'asc').limit(5));
+    this.applicazioniCollection = this.afs.collection('applicazioni', (ref) => ref.orderBy('nome', 'asc'));
   }
 
   getData(): Observable<any[]> {
@@ -27,13 +28,31 @@ export class ApplicazioniService {
     );
   }
 
+  /**
+   * Transforms grid data products recieved from the API into array of 'Product' instances
+   *
+   * @param products
+  static gridAdapter(products: any): Array<Product> {
+    return products.map(product => new Product(product));
+  }
+   */
+  
   getApplicazione(id: string) {
     return this.afs.doc<any>(`applicazioni/${id}`);
   }
 
-  createApplicazione(name: string) {
+  createApplicazione(  codice: string
+                     , nome: string
+                     , custom_o_pckg: string
+                     , pckg_verticalizzazioni: boolean
+                     , obsoleta: boolean
+   ) {
     const applicazione = {
-      name,
+      codice,
+      nome,
+      custom_o_pckg,
+      pckg_verticalizzazioni,
+      obsoleta,
       time: new Date().getTime(),
     };
     return this.applicazioniCollection.add(applicazione);

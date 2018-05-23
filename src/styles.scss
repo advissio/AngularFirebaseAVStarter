@@ -4,6 +4,10 @@
 @import url('https://fonts.googleapis.com/css?family=Palanquin|Source+Sans+Pro');
 @import 'bulma/css/bulma.css';
 
+@import '~@swimlane/ngx-datatable/release/index.css';
+@import '~@swimlane/ngx-datatable/release/themes/material.css';
+@import '~@swimlane/ngx-datatable/release/assets/icons.css';
+
 // Colors
 
 $white:  #fff !default;
@@ -171,7 +175,3 @@ app-root:empty + .loading {
 }
 
 .button { margin-right: 5px; }
-
-
-
-  

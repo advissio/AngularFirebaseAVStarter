@@ -1,17 +1,38 @@
-<h1>Firestore Applicazioni</h1>
-<p>
-  Learn how to build 
-  <a href="https://angularfirebase.com/tag/firestore">cool stuff with Firestore</a>
-</p>
-<hr>
-
-<input [(ngModel)]="name" placeholder="nome dell'applicazione" class="input">
-
-
-<button class="button is-success" (click)="clickHandler()" [disabled]="name?.length < 2 || name?.length > 200">
-  Add
-</button>
-<hr>
-<div *ngFor="let applicazione of applicazioni | async">
-  <applicazione-detail [applicazione]="applicazione"></applicazione-detail>
-</div>
+<h1>Elenco applicazioni</h1>
+    <div>
+      <h3>
+        Fix Row Height
+        <small>
+          <a href="https://github.com/swimlane/ngx-datatable/blob/master/demo/basic/basic-fixed.component.ts" target="_blank">
+            Source
+          </a>
+        </small>
+      </h3>
+      <div *ngFor="let applicazione of applicazioni | async">
+  		<p>{{ applicazione.nome }}</p>
+	  </div>
+       <ngx-datatable
+        class="material striped"
+        [columns]="colonne"
+        [columnMode]="'force'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+        [rowHeight]="20">
+        [rows]="applicazioni">
+		<ngx-datatable-column name="nome">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+		<ngx-datatable-column name="codice">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>        
+		<ngx-datatable-column name="custom_o_pckg">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>        
+      </ngx-datatable>
+     </div>

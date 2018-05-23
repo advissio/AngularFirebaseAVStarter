@@ -10,17 +10,38 @@ import { Observable } from 'rxjs';
 export class ApplicazioniListComponent implements OnInit {
 
   applicazioni: Observable<any[]>;
-  name: string;
+  codice: string;
+  nome: string;
+  custom_o_pckg: string;
+  pckg_verticalizzazioni: boolean;
+  obsoleta: boolean;
 
+  colonne: [
+      { prop: 'nome' },
+      { name: 'codice' },
+      { name: 'custom_o_pckg' }
+    ];
+  
   constructor(private applicazioniService: ApplicazioniService) { }
 
   ngOnInit() {
     this.applicazioni = this.applicazioniService.getData();
   }
 
+  // per click su pulsante
   clickHandler() {
-    this.applicazioniService.createApplicazione(this.name);
-    this.name = '';
+    // manca valorizzazione dell'applicazione corrente !!! 
+    // magari fatta come istanza di Applicazione ?!? :-)
+//    this.applicazioniService.createApplicazione(   this.codice
+//                                                 , this.nome
+//                                                 , this.custom_o_pckg
+//                                                 , this.pckg_verticalizzazioni
+//                                                 , this.obsoleta);
+    this.nome = '';
+//    codice: string;
+//    nome: string;
+//    custom_o_pckg: string;
+//    pckg_verticalizzazioni: boolean;
+//    obsoleta: boolean;
   }
-
 }
