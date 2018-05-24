@@ -28,7 +28,7 @@ export class NotesService {
   }
 
   getNote(id: string) {
-    return this.afs.doc<any>(`notes/${id}`);
+    return this.afs.doc<any>('notes/${id}');
   }
 
   createNote(content: string) {

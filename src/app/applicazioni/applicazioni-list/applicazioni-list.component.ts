@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 export class ApplicazioniListComponent implements OnInit {
 
   applicazioni: Observable<any[]>;
+//  applicazioni;
   codice: string;
   nome: string;
   custom_o_pckg: string;
@@ -17,11 +18,9 @@ export class ApplicazioniListComponent implements OnInit {
   obsoleta: boolean;
 
   colonne: [
-      { prop: 'nome' },
-      { name: 'codice' },
-      { name: 'custom_o_pckg' }
+      { prop: 'nome', name: 'Nome' }
     ];
-  
+
   constructor(private applicazioniService: ApplicazioniService) { }
 
   ngOnInit() {
@@ -44,4 +43,6 @@ export class ApplicazioniListComponent implements OnInit {
 //    pckg_verticalizzazioni: boolean;
 //    obsoleta: boolean;
   }
+
+  saveNomeclickHandler(){}
 }

@@ -8,31 +8,23 @@
           </a>
         </small>
       </h3>
-      <div *ngFor="let applicazione of applicazioni | async">
-  		<p>{{ applicazione.nome }}</p>
-	  </div>
-       <ngx-datatable
-        class="material striped"
-        [columns]="colonne"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [rowHeight]="20">
-        [rows]="applicazioni">
-		<ngx-datatable-column name="nome">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
-		<ngx-datatable-column name="codice">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>        
-		<ngx-datatable-column name="custom_o_pckg">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>        
-      </ngx-datatable>
-     </div>
+     <div *ngFor="let applicazione of applicazioni | async">
+  		<p>{{ applicazione.id }}</p>
+		<input [(ngModel)]="applicazione.nome" id="nomeApp" placeholder="Add your own note" class="input">  		
+  		<p>{{ applicazione.codice }}</p>
+  		<p>{{ applicazione.time }}</p>
+ 		<button class="button is-success" (click)="saveNomeclickHandler()" [disabled]="applicazione.nome?.length < 5 || applicazione.nome?.length > 200">  
+		  Modifica Nome
+		</button>
+<!-- 
+		<ngx-datatable
+		    class="material striped"
+		    [rows]="applicazioni"
+		    [columns]="colonne"
+		    [columnMode]="'force'"
+		    [headerHeight]="50"
+		    [footerHeight]="50"
+		    [rowHeight]="50">
+		</ngx-datatable>
+-->
+       </div>
