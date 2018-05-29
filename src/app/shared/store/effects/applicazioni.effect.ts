@@ -38,25 +38,27 @@ export class ApplicazioniEffects {
    * Applicazioni list
    */
   @Effect()
-  getApplicazioni$: Observable<Action> = this.actions$
-    .ofType(applicazioniActions.ActionTypes.LOAD)
-    .pipe(map((action: applicazioniActions.LoadAction) => action.payload))
-    .pipe(switchMap(state => {
+  getApplicazioni$: Observable<Action> = this.actions$.pipe(
+    ofType(applicazioniActions.ActionTypes.LOAD),
+    pipe(map((action: applicazioniActions.LoadAction) => action.payload)),
+    pipe(switchMap(state => {
       return this.applicazioniApiClient.getApplicazioni()
         .pipe(map(applicazioni => new applicazioniActions.LoadSuccessAction(applicazioni)))
         .catch(error  => of(new applicazioniActions.LoadFailAction()));
-    }));
+    })));
 
   /**
    * Applicazione details
    */
   @Effect()
-  getApplicazioneDetails$: Observable<Action> = this.actions$
-    .ofType(applicazioneDetailsActions.ActionTypes.LOAD)
-    .pipe(map((action: applicazioneDetailsActions.LoadAction) => action.payload)
-    ,switchMap(state => {
-      return this.applicazioniApiClient.getApplicazioneDetails(state)
-        .pipe(map(applicazioni => new applicazioneDetailsActions.LoadSuccessAction(applicazioni)))
-        .catch(error  => of(new applicazioneDetailsActions.LoadFailAction()));
-    }));
+  getApplicazioneDetails$: Observable<Action> = this.actions$.pipe(
+    ofType(applicazioneDetailsActions.ActionTypes.LOAD),
+    map((action: applicazioneDetailsActions.LoadAction) => action.payload),
+    switchMap(state => {
+      return this.applicazioniApiClient.getApplicazioneDetails(state).pipe(
+      map(applicazioni => new applicazioneDetailsActions.LoadSuccessAction(applicazioni))
+      .catch(error  => of(new applicazioneDetailsActions.LoadFailAction()))
+      );}
+    )
+  );
 }
